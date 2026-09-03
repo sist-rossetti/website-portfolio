@@ -539,8 +539,63 @@
     });
   }
 
+  function listaOrdenableNav(cont, lista) {
+    cont.textContent = '';
+    lista.forEach(function (it, i) {
+      var fila = el('div', 'fila-orden');
+      fila.draggable = true;
+      fila.dataset.i = i;
+
+      fila.appendChild(el('span', 'asa', '⠿'));
+
+      var input = document.createElement('input');
+      input.className = 'input nombre-editable';
+      input.value = it.etiqueta;
+      input.addEventListener('input', function () { it.etiqueta = input.value; });
+      fila.appendChild(input);
+
+      var chk = document.createElement('input');
+      chk.type = 'checkbox';
+      chk.checked = it.visible !== false;
+      chk.addEventListener('change', function () { it.visible = chk.checked; });
+      var lab = el('label', 'check');
+      lab.appendChild(chk);
+      lab.appendChild(document.createTextNode('Visible'));
+      fila.appendChild(lab);
+
+      var flechas = el('div', 'flechas');
+      flechas.appendChild(botonMini('↑', 'Subir', function () {
+        mover(lista, i, -1);
+        listaOrdenableNav(cont, lista);
+      }));
+      flechas.appendChild(botonMini('↓', 'Bajar', function () {
+        mover(lista, i, 1);
+        listaOrdenableNav(cont, lista);
+      }));
+      fila.appendChild(flechas);
+
+      fila.addEventListener('dragstart', function () {
+        fila.classList.add('arrastrando');
+        cont.dataset.desde = i;
+      });
+      fila.addEventListener('dragend', function () { fila.classList.remove('arrastrando'); });
+      fila.addEventListener('dragover', function (e) { e.preventDefault(); });
+      fila.addEventListener('drop', function (e) {
+        e.preventDefault();
+        var desde = parseInt(cont.dataset.desde, 10);
+        var hasta = i;
+        if (isNaN(desde) || desde === hasta) return;
+        var mov = lista.splice(desde, 1)[0];
+        lista.splice(hasta, 0, mov);
+        listaOrdenableNav(cont, lista);
+      });
+
+      cont.appendChild(fila);
+    });
+  }
+
   function pintarSecciones() {
-    listaOrdenable($('#s-nav'), contenido.navegacion, function (t) { return t.etiqueta; });
+    listaOrdenableNav($('#s-nav'), contenido.navegacion);
     listaOrdenable($('#s-bloques'), contenido.bloques, function (b) { return b.nombre; });
     var chk = $('#s-animacion');
     chk.checked = contenido.hero.mostrarAnimacion !== false;

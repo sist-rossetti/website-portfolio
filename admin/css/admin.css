@@ -171,6 +171,7 @@ textarea.input{min-height:96px;resize:vertical}
 .fila-orden.arrastrando{opacity:.4}
 .fila-orden .asa{color:var(--color-neutral-500);font-size:13px}
 .fila-orden .nombre{flex:1;font-size:13.5px}
+.fila-orden .nombre-editable{flex:1;width:auto;padding:6px 10px;font-size:13.5px}
 .fila-orden .flechas{display:flex;gap:4px}
 .mini{
   appearance:none;background:transparent;cursor:pointer;
