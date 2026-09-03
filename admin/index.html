@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel de administración</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/nocturne.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<!-- ══════════ ACCESO ══════════ -->
+<div class="login-screen" id="login-screen">
+  <form class="login-card card elev-lg" id="login-form">
+    <div class="login-brand"><span class="mark">◆</span> Panel de administración</div>
+    <p class="login-note">Ingrese con su correo y contraseña.</p>
+    <div class="field">
+      <label for="li-correo">Correo</label>
+      <input class="input" id="li-correo" type="email" autocomplete="email" required>
+    </div>
+    <div class="field">
+      <label for="li-clave">Contraseña</label>
+      <input class="input" id="li-clave" type="password" autocomplete="current-password" required>
+    </div>
+    <button class="btn btn-primary btn-block" type="submit" id="li-enviar">Entrar</button>
+    <p class="login-error" id="li-error" hidden></p>
+    <button class="btn btn-ghost btn-block" type="button" id="li-recuperar">Olvidé mi contraseña</button>
+  </form>
+</div>
+
+<!-- ══════════ PANEL ══════════ -->
+<div class="app" id="app" hidden>
+  <aside class="side">
+    <div class="side-brand"><span class="mark">◆</span><span>Administración</span></div>
+    <nav class="side-nav">
+      <button class="side-link is-active" data-vista="consultas"><span class="ico">◧</span>Consultas<span class="badge" id="badge-nuevas" hidden>0</span></button>
+      <button class="side-link" data-vista="contenido"><span class="ico">◫</span>Textos</button>
+      <button class="side-link" data-vista="diseno"><span class="ico">◑</span>Diseño</button>
+      <button class="side-link" data-vista="secciones"><span class="ico">☰</span>Secciones</button>
+      <button class="side-link" data-vista="servicios"><span class="ico">▤</span>Servicios</button>
+      <button class="side-link" data-vista="planes"><span class="ico">▦</span>Planes</button>
+      <button class="side-link" data-vista="portafolio"><span class="ico">▣</span>Portafolio</button>
+      <button class="side-link" data-vista="contacto"><span class="ico">✆</span>Contacto</button>
+      <button class="side-link" data-vista="medios"><span class="ico">▧</span>Imágenes</button>
+      <button class="side-link" data-vista="seo"><span class="ico">◍</span>SEO</button>
+      <button class="side-link solo-admin" data-vista="usuarios" hidden><span class="ico">◉</span>Usuarios</button>
+    </nav>
+    <div class="side-foot">
+      <div class="usuario">
+        <div class="usuario-nombre" id="usuario-correo">—</div>
+        <div class="usuario-rol" id="usuario-rol">—</div>
+      </div>
+      <button class="btn btn-ghost btn-block" id="salir">Cerrar sesión</button>
+      <a class="ver-sitio" href="../index.html" target="_blank" rel="noopener">Ver el sitio ↗</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="bar">
+      <h1 id="vista-titulo">Consultas</h1>
+      <div class="bar-actions">
+        <span class="guardado" id="guardado" hidden>Guardado</span>
+        <button class="btn btn-secondary" id="descartar" hidden>Descartar cambios</button>
+        <button class="btn btn-primary" id="publicar" hidden>Publicar cambios</button>
+      </div>
+    </header>
+
+    <!-- ---------- Consultas ---------- -->
+    <section class="vista is-visible" data-vista="consultas">
+      <div class="filtros">
+        <input class="input busca" id="q-busca" type="search" placeholder="Buscar por nombre, empresa o correo…">
+        <div class="seg" id="q-estado">
+          <button class="seg-opt is-on" data-estado="">Todas</button>
+          <button class="seg-opt" data-estado="nueva">Nuevas</button>
+          <button class="seg-opt" data-estado="en_proceso">En proceso</button>
+          <button class="seg-opt" data-estado="cerrada">Cerradas</button>
+        </div>
+        <button class="btn btn-secondary" id="q-exportar">Exportar CSV</button>
+      </div>
+      <div class="consultas-wrap">
+        <table class="table consultas">
+          <thead>
+            <tr><th>Recibida</th><th>Nombre</th><th>Empresa</th><th>Necesita</th><th>Estado</th><th></th></tr>
+          </thead>
+          <tbody id="q-lista"></tbody>
+        </table>
+        <p class="vacio" id="q-vacio" hidden>Todavía no hay consultas.</p>
+      </div>
+    </section>
+
+    <!-- ---------- Textos ---------- -->
+    <section class="vista" data-vista="contenido">
+      <div class="bloques" id="v-contenido"></div>
+    </section>
+
+    <!-- ---------- Diseño ---------- -->
+    <section class="vista" data-vista="diseno">
+      <div class="bloques">
+        <div class="bloque card elev-sm">
+          <h2>Color de acento</h2>
+          <p class="ayuda">Todo el sitio deriva sus tonos de este color: bordes, etiquetas, botones y la animación de la portada.</p>
+          <div class="color-fila">
+            <input type="color" id="d-acento" class="rueda">
+            <input class="input hexa" id="d-acento-hex" maxlength="7" spellcheck="false">
+            <div class="rampa" id="d-rampa"></div>
+          </div>
+          <div class="paleta" id="d-paleta"></div>
+        </div>
+
+        <div class="bloque card elev-sm">
+          <h2>Color de fondo</h2>
+          <div class="color-fila">
+            <input type="color" id="d-fondo" class="rueda">
+            <input class="input hexa" id="d-fondo-hex" maxlength="7" spellcheck="false">
+          </div>
+        </div>
+
+        <div class="bloque card elev-sm">
+          <h2>Tipografías</h2>
+          <div class="form-2">
+            <div class="field"><label for="d-fuente-titulo">Títulos</label><select class="input" id="d-fuente-titulo"></select></div>
+            <div class="field"><label for="d-fuente-texto">Texto</label><select class="input" id="d-fuente-texto"></select></div>
+          </div>
+          <p class="muestra" id="d-muestra">Aa — Su empresa no necesita más personal.</p>
+        </div>
+
+        <div class="bloque card elev-sm">
+          <h2>Vista previa</h2>
+          <p class="ayuda">Los cambios se ven en el sitio al publicar. Abra el sitio en otra pestaña para comparar.</p>
+          <div class="previa" id="d-previa"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Secciones ---------- -->
+    <section class="vista" data-vista="secciones">
+      <div class="bloques">
+        <div class="bloque card elev-sm">
+          <h2>Pestañas del menú</h2>
+          <p class="ayuda">Oculte una pestaña para quitarla del sitio sin borrar su contenido.</p>
+          <div class="lista-orden" id="s-nav"></div>
+        </div>
+        <div class="bloque card elev-sm">
+          <h2>Bloques de la portada</h2>
+          <p class="ayuda">Arrastre para reordenar o use las flechas. Oculte lo que no quiera mostrar.</p>
+          <div class="lista-orden" id="s-bloques"></div>
+        </div>
+        <div class="bloque card elev-sm">
+          <h2>Animación de la portada</h2>
+          <label class="check"><input type="checkbox" id="s-animacion"> Mostrar la animación de papeles → panel</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Colecciones ---------- -->
+    <section class="vista" data-vista="servicios"><div class="bloques" id="v-servicios"></div></section>
+    <section class="vista" data-vista="planes"><div class="bloques" id="v-planes"></div></section>
+    <section class="vista" data-vista="portafolio"><div class="bloques" id="v-portafolio"></div></section>
+    <section class="vista" data-vista="contacto"><div class="bloques" id="v-contacto"></div></section>
+
+    <!-- ---------- Imágenes ---------- -->
+    <section class="vista" data-vista="medios">
+      <div class="bloques">
+        <div class="bloque card elev-sm">
+          <h2>Subir una imagen</h2>
+          <p class="ayuda">Las imágenes se guardan en el almacenamiento del proyecto. Copie el enlace y péguelo en el logo o en un proyecto del portafolio.</p>
+          <input type="file" id="m-archivo" accept="image/*" multiple>
+          <p class="login-error" id="m-error" hidden></p>
+        </div>
+        <div class="bloque card elev-sm">
+          <h2>Imágenes cargadas</h2>
+          <div class="medios" id="m-lista"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- SEO ---------- -->
+    <section class="vista" data-vista="seo"><div class="bloques" id="v-seo"></div></section>
+
+    <!-- ---------- Usuarios ---------- -->
+    <section class="vista" data-vista="usuarios">
+      <div class="bloques">
+        <div class="bloque card elev-sm">
+          <h2>Equipo</h2>
+          <p class="ayuda">Los usuarios se crean desde Supabase → Authentication → Users. Aquí puede cambiar su rol.</p>
+          <table class="table">
+            <thead><tr><th>Correo</th><th>Nombre</th><th>Rol</th><th>Desde</th></tr></thead>
+            <tbody id="u-lista"></tbody>
+          </table>
+        </div>
+        <div class="bloque card elev-sm">
+          <h2>Historial de versiones</h2>
+          <p class="ayuda">Cada publicación guarda la versión anterior. Puede volver a cualquiera de las últimas 30.</p>
+          <div class="versiones" id="u-versiones"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Panel de detalle de una consulta -->
+<div class="cajon" id="cajon" hidden>
+  <div class="cajon-fondo" data-cerrar-cajon></div>
+  <div class="cajon-panel card elev-lg">
+    <button class="cajon-cerrar" data-cerrar-cajon aria-label="Cerrar">✕</button>
+    <div id="cajon-cuerpo"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../js/supabase-config.js"></script>
+<script src="../js/content-default.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

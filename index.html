@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[Tu Marca] — Desarrollo de aplicaciones y automatización de procesos</title>
+<meta name="description" id="meta-desc" content="Desarrollamos aplicaciones a la medida de su operación y automatizamos las tareas que consumen las horas de su equipo.">
+<meta property="og:title" id="meta-og-title" content="[Tu Marca]">
+<meta property="og:description" id="meta-og-desc" content="">
+<meta property="og:image" id="meta-og-image" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="fuentes" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/nocturne.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#inicio" data-tab-link="inicio">
+      <span class="brand-mark" id="brand-mark">◆</span>
+      <img class="brand-logo" id="brand-logo" alt="" hidden>
+      <span class="brand-name" id="brand-name">[Tu Marca]</span>
+    </a>
+    <nav class="tabs" id="tabs" aria-label="Secciones">
+      <span class="tab-indicator" aria-hidden="true"></span>
+    </nav>
+    <button class="btn btn-primary header-cta" id="header-cta" data-tab-link="contacto">Cotizar mi proyecto</button>
+  </div>
+</header>
+
+<!-- ══════════ INICIO ══════════ -->
+<main class="panel is-visible" id="inicio" data-panel="inicio">
+
+  <section class="hero" data-bloque="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-rule"></span><span data-k="hero.eyebrow"></span></p>
+        <h1 data-k="hero.titulo"></h1>
+        <p class="lead" data-k="hero.parrafo1"></p>
+        <p class="lead" data-k="hero.parrafo2"></p>
+        <div class="btn-row">
+          <button class="btn btn-primary btn-lg" data-tab-link="contacto" data-k="hero.boton1"></button>
+          <button class="btn btn-secondary btn-lg" data-tab-link="servicios" data-k="hero.boton2"></button>
+        </div>
+      </div>
+
+      <div class="hero-visual" id="hero-visual">
+        <div class="anim" id="anim" aria-hidden="true">
+          <div class="sheet s1"></div>
+          <div class="sheet s2"></div>
+          <div class="sheet s3"></div>
+          <div class="sheet s4"></div>
+          <div class="morph">
+            <div class="to-bar"></div>
+            <div class="to-tab"></div>
+            <div class="to-btn"></div>
+            <div class="absorb l1"></div>
+            <div class="absorb l2"></div>
+            <div class="absorb l3"></div>
+            <div class="ui dots"><span></span><span></span><span></span></div>
+            <div class="ui tab-label"><span class="dot"></span>Panel de control</div>
+            <div class="ui tab-alt">Reportes</div>
+            <div class="ui panel-title">Ventas del mes</div>
+            <div class="ui gen-label">Generar</div>
+            <div class="ripple"></div>
+            <div class="cursor">
+              <svg viewBox="0 0 14 20" width="14" height="20"><path d="M1 1 L1 15 L4.6 11.6 L7 18 L9.6 16.9 L7.2 10.7 L12 10.4 Z" fill="var(--color-neutral-100)" stroke="var(--color-neutral-800)" stroke-width="1"></path></svg>
+            </div>
+            <div class="kpis">
+              <div class="kpi"><b>+38%</b><span>conversión</span></div>
+              <div class="kpi"><b>1.240</b><span>cotizaciones</span></div>
+              <div class="kpi"><b>6 h</b><span>ahorro / día</span></div>
+            </div>
+            <div class="bars"><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="ui trend">
+              <p>Tendencia de ingresos</p>
+              <svg viewBox="0 0 220 26" preserveAspectRatio="none"><path d="M3 22 L40 17 L77 19 L114 11 L151 13 L188 5 L217 3" fill="none" stroke="var(--color-accent-300)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="230"></path></svg>
+            </div>
+          </div>
+        </div>
+        <p class="anim-caption" data-k="hero.leyenda"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" data-bloque="band">
+    <div class="band-inner" id="band-items"></div>
+  </section>
+
+  <section class="wrap services" data-bloque="servicios">
+    <h2 data-reveal="left" data-k="servicios.titulo"></h2>
+    <p class="section-lead" data-reveal="left" data-reveal-delay=".08" data-k="servicios.intro"></p>
+    <div class="grid-2" id="servicios-items"></div>
+  </section>
+
+  <section class="wrap cta-wrap" data-bloque="cta">
+    <div class="cta" data-reveal="up">
+      <div>
+        <h3 data-k="cta.titulo"></h3>
+        <p data-k="cta.texto"></p>
+      </div>
+      <button class="btn btn-primary btn-lg" data-tab-link="contacto" data-k="cta.boton"></button>
+    </div>
+  </section>
+</main>
+
+<!-- ══════════ SERVICIOS Y PLANES ══════════ -->
+<main class="panel wrap panel-pad" id="servicios" data-panel="servicios" hidden>
+  <h2 data-reveal="left" data-k="planes.titulo"></h2>
+  <p class="section-lead wide" data-reveal="left" data-reveal-delay=".08" data-k="planes.intro"></p>
+  <div class="grid-3 plans" id="planes-items"></div>
+
+  <h3 class="sub-head" data-k="planes.comparativaTitulo"></h3>
+  <table class="table compare" data-reveal="up">
+    <thead id="compare-head"></thead>
+    <tbody id="compare-body"></tbody>
+  </table>
+
+  <h3 class="sub-head" data-k="planes.extrasTitulo"></h3>
+  <div class="grid-3 extras" id="planes-extras"></div>
+</main>
+
+<!-- ══════════ PORTAFOLIO ══════════ -->
+<main class="panel wrap panel-pad" id="portafolio" data-panel="portafolio" hidden>
+  <h2 data-reveal="left" data-k="portafolio.titulo"></h2>
+  <p class="section-lead" data-reveal="left" data-reveal-delay=".08" data-k="portafolio.intro"></p>
+  <div class="grid-3 projects" id="portafolio-items"></div>
+  <div class="demo-cta">
+    <p data-k="portafolio.demoTexto"></p>
+    <button class="btn btn-primary" data-tab-link="contacto" data-k="portafolio.demoBoton"></button>
+  </div>
+</main>
+
+<!-- ══════════ CONTACTO ══════════ -->
+<main class="panel wrap panel-pad" id="contacto" data-panel="contacto" hidden>
+  <div class="contact-grid">
+    <div>
+      <h2 data-reveal="left" data-k="contactoSec.titulo"></h2>
+      <p class="section-lead narrow" data-reveal="left" data-reveal-delay=".08" data-k="contactoSec.intro"></p>
+
+      <div class="card elev-md sent-card" id="sent-card" hidden>
+        <div class="card-kicker" data-k="contactoSec.graciasTitulo"></div>
+        <div class="card-title">Gracias, <span id="sent-name"></span></div>
+        <p class="card-body" data-k="contactoSec.graciasTexto"></p>
+        <button class="btn btn-ghost" id="send-again">Enviar otro mensaje</button>
+      </div>
+
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-row">
+          <div class="field"><label for="nombre">Nombre</label><input class="input" id="nombre" name="nombre" placeholder="Su nombre" required></div>
+          <div class="field"><label for="empresa">Empresa</label><input class="input" id="empresa" name="empresa" placeholder="Nombre de la empresa"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="correo">Correo</label><input class="input" id="correo" name="correo" type="email" placeholder="nombre@empresa.com" required></div>
+          <div class="field"><label for="telefono">Teléfono / WhatsApp</label><input class="input" id="telefono" name="telefono" placeholder="+00 000 000 000"></div>
+        </div>
+        <div class="field">
+          <label>¿Qué necesita?</label>
+          <div class="need-row" id="needs"></div>
+        </div>
+        <div class="field"><label for="mensaje">Cuéntenos brevemente</label><textarea class="input" id="mensaje" name="mensaje" placeholder="Hoy cotizamos a mano en Excel y perdemos seguimiento de los clientes…"></textarea></div>
+        <div class="submit-row">
+          <button class="btn btn-primary btn-lg" type="submit" data-k="contactoSec.botonEnviar"></button>
+          <span class="note" data-k="contactoSec.notaEnvio"></span>
+        </div>
+        <p class="form-error" id="form-error" hidden></p>
+      </form>
+    </div>
+
+    <aside class="contact-side" data-reveal="right">
+      <div class="card elev-sm">
+        <div class="card-kicker">Agendar</div>
+        <div class="card-title" data-k="contactoSec.agendaTitulo"></div>
+        <p class="card-body" data-k="contactoSec.agendaTexto"></p>
+        <div class="slots" id="slots"></div>
+        <a class="btn btn-secondary btn-block" id="calendar-link" href="#" data-k="contactoSec.agendaBoton"></a>
+      </div>
+
+      <a class="card elev-sm" id="wa-card" href="#" target="_blank" rel="noopener">
+        <div class="card-kicker">WhatsApp</div>
+        <div class="card-title" data-k="contacto.telefono"></div>
+        <p class="card-body" data-k="contacto.horario"></p>
+      </a>
+
+      <a class="card elev-sm" id="tel-card" href="#">
+        <div class="card-kicker">Teléfono</div>
+        <div class="card-title" data-k="contacto.telefono"></div>
+      </a>
+
+      <a class="card elev-sm" id="mail-card" href="#">
+        <div class="card-kicker">Correo</div>
+        <div class="card-title" data-k="contacto.correo"></div>
+      </a>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span data-k="pie"></span>
+    <span id="footer-contacto"></span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/content-default.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
