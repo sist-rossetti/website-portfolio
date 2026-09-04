@@ -5,8 +5,8 @@
    (la clave "anon" es pública por diseño; no ponga aquí la service_role)
    ============================================================ */
 window.SUPABASE_CONFIG = {
-  url: 'https://SU-PROYECTO.supabase.co',
-  anonKey: 'SU_CLAVE_ANON_PUBLICA'
+  url: 'https://ovqkhyvyfmyaoccfskjq.supabase.co',
+  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92cWtoeXZ5Zm15YW9jY2Zza2pxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg0NzU3OTAsImV4cCI6MjEwNDA1MTc5MH0.t-8xufLyVNh-tsdrYGOONqm9PhU6WCq_sRCpp8Brhrw'
 };
 
 window.crearCliente = function () {
